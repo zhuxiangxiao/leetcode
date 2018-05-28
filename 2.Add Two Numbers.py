@@ -13,19 +13,32 @@ class Solution(object):
         :rtype: ListNode
         """
         answers=[]
-        while l1 or l2:
-            answer=0
+        carry=0
+        sums=l1.val+l2.val
+        if sums>=10:
+            sums-=10
+            carry=1
+        else:
+            carry=0
+        tmp=ListNode(sums)
+        result=tmp
+        l1=l1.next
+        l2=l2.next
+        while l1 or l2 or carry:
+            sums=carry
             if l1:
-                answer+=l1.val
+                sums+=l1.val
                 l1=l1.next
             if l2:
-                answer+=l2.val
+                sums+=l2.val
                 l2=l2.next
-            answers.insert(0,answer)
-        for x in answers:
-            print x
-            result=ListNode(x) 
-            result.next=result
+            if sums>=10:
+                sums-=10
+                carry=1
+            else:
+                carry=0
+            tmp.next=ListNode(sums)
+            tmp=tmp.next
         return result
 
 def stringToListNode(input):
