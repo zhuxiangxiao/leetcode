@@ -6,6 +6,17 @@ class Solution(object):
         """
         return len(str(bin(n)).split('1'))-1
 
+    def hammingWeightSolution2(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        ans=0
+        while n:
+            ans+=n%2
+            n /= 2
+        return ans
+
 def stringToInt(input):
     return int(input)
 
