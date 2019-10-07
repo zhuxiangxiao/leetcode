@@ -50,6 +50,23 @@
 # @lc code=start
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        
+        if numRows<=1:
+            return s
+        if len(s)<=numRows:
+            return s
+        result=['']*numRows
+        flag=True
+        i=0
+        for k,c in enumerate(s):
+            result[i]=result[i]+c
+            flag=flag!= (k > 0 and ((i == 0) or (i == numRows - 1)))        
+            if flag:
+                i+=1
+                pass
+            else:
+                i-=1
+                pass
+            pass
+        return "".join(result)
 # @lc code=end
 
